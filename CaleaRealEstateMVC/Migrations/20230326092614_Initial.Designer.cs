@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaleaRealEstateMVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230315204943_Initial")]
+    [Migration("20230326092614_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,46 +24,7 @@ namespace CaleaRealEstateMVC.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CaleaRealEstateMVC.Models.Imovel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("Ativo")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Descricao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagemURL")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ImovelEnderecoId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Valor")
-                        .HasColumnType("float");
-
-                    b.Property<int>("VendedorId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ImovelEnderecoId")
-                        .IsUnique();
-
-                    b.HasIndex("VendedorId");
-
-                    b.ToTable("Imoveis");
-                });
-
-            modelBuilder.Entity("CaleaRealEstateMVC.Models.ImovelEndereco", b =>
+            modelBuilder.Entity("CaleaRealEstateMVC.Models.Endereco", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -94,7 +55,46 @@ namespace CaleaRealEstateMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ImoveisEnderecos");
+                    b.ToTable("Enderecos");
+                });
+
+            modelBuilder.Entity("CaleaRealEstateMVC.Models.Imovel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EnderecoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagemURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("float");
+
+                    b.Property<int>("VendedorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EnderecoId")
+                        .IsUnique();
+
+                    b.HasIndex("VendedorId");
+
+                    b.ToTable("Imoveis");
                 });
 
             modelBuilder.Entity("CaleaRealEstateMVC.Models.Vendedor", b =>
@@ -111,6 +111,9 @@ namespace CaleaRealEstateMVC.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Telefone")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Vendedores");
@@ -118,9 +121,9 @@ namespace CaleaRealEstateMVC.Migrations
 
             modelBuilder.Entity("CaleaRealEstateMVC.Models.Imovel", b =>
                 {
-                    b.HasOne("CaleaRealEstateMVC.Models.ImovelEndereco", "ImovelEndereco")
+                    b.HasOne("CaleaRealEstateMVC.Models.Endereco", "Endereco")
                         .WithOne("Imovel")
-                        .HasForeignKey("CaleaRealEstateMVC.Models.Imovel", "ImovelEnderecoId")
+                        .HasForeignKey("CaleaRealEstateMVC.Models.Imovel", "EnderecoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -130,12 +133,12 @@ namespace CaleaRealEstateMVC.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ImovelEndereco");
+                    b.Navigation("Endereco");
 
                     b.Navigation("Vendedor");
                 });
 
-            modelBuilder.Entity("CaleaRealEstateMVC.Models.ImovelEndereco", b =>
+            modelBuilder.Entity("CaleaRealEstateMVC.Models.Endereco", b =>
                 {
                     b.Navigation("Imovel");
                 });

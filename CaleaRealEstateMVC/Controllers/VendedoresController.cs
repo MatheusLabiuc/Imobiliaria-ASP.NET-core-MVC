@@ -15,7 +15,7 @@ namespace CaleaRealEstateMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allProducers = await _context.Vendedores.ToListAsync();
+            var allProducers = await _context.Vendedores.Include(i => i.Imoveis).ToListAsync();
             return View(allProducers);
         }
     }

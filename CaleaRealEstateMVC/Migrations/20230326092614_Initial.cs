@@ -10,7 +10,7 @@ namespace CaleaRealEstateMVC.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ImoveisEnderecos",
+                name: "Enderecos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -25,7 +25,7 @@ namespace CaleaRealEstateMVC.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ImoveisEnderecos", x => x.Id);
+                    table.PrimaryKey("PK_Enderecos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -35,7 +35,8 @@ namespace CaleaRealEstateMVC.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Documento = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Documento = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Telefone = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -53,16 +54,16 @@ namespace CaleaRealEstateMVC.Migrations
                     Valor = table.Column<double>(type: "float", nullable: false),
                     DataCadastro = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Ativo = table.Column<bool>(type: "bit", nullable: false),
-                    ImovelEnderecoId = table.Column<int>(type: "int", nullable: false),
+                    EnderecoId = table.Column<int>(type: "int", nullable: false),
                     VendedorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Imoveis", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Imoveis_ImoveisEnderecos_ImovelEnderecoId",
-                        column: x => x.ImovelEnderecoId,
-                        principalTable: "ImoveisEnderecos",
+                        name: "FK_Imoveis_Enderecos_EnderecoId",
+                        column: x => x.EnderecoId,
+                        principalTable: "Enderecos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -74,9 +75,9 @@ namespace CaleaRealEstateMVC.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Imoveis_ImovelEnderecoId",
+                name: "IX_Imoveis_EnderecoId",
                 table: "Imoveis",
-                column: "ImovelEnderecoId",
+                column: "EnderecoId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -91,7 +92,7 @@ namespace CaleaRealEstateMVC.Migrations
                 name: "Imoveis");
 
             migrationBuilder.DropTable(
-                name: "ImoveisEnderecos");
+                name: "Enderecos");
 
             migrationBuilder.DropTable(
                 name: "Vendedores");

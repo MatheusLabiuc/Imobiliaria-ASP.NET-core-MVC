@@ -20,11 +20,11 @@ namespace CaleaRealEstateMVC.Models
 
         //relationships
 
-        public int ImovelEnderecoId { get; set; }
+        public int EnderecoId { get; set; }
 
-        [ForeignKey("ImovelEnderecoId")]
+        [ForeignKey("EnderecoId")]
 
-        public ImovelEndereco ImovelEndereco { get; set; }
+        public Endereco Endereco { get; set; }
 
         public int VendedorId { get; set; }
 

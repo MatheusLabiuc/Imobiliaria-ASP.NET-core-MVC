@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CaleaRealEstateMVC.Models
 {
-    public class ImovelEndereco
+    public class Endereco 
     {
-        [Key]
         public int Id { get; set; }
 
         public string Logradouro { get; set; }
@@ -25,5 +25,6 @@ namespace CaleaRealEstateMVC.Models
         //relationship
 
         public Imovel Imovel { get; set; }
+
     }
 }

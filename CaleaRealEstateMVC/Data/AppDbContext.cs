@@ -14,9 +14,9 @@ namespace CaleaRealEstateMVC.Data
         {
             //  modelBuilder.Entity<ImovelEndereco>().Property(e => e.Id).ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<ImovelEndereco>().HasKey(c => c.Id);
+            modelBuilder.Entity<Endereco>().HasKey(c => c.Id);
 
-            modelBuilder.Entity<ImovelEndereco>().HasOne(v => v.Imovel);
+            modelBuilder.Entity<Endereco>().HasOne(v => v.Imovel);
 
             modelBuilder.Entity<Vendedor>().HasMany(m => m.Imoveis);
 
@@ -27,6 +27,6 @@ namespace CaleaRealEstateMVC.Data
 
         public DbSet<Imovel> Imoveis { get; set;}
 
-        public DbSet<ImovelEndereco> ImoveisEnderecos { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
     }
 }

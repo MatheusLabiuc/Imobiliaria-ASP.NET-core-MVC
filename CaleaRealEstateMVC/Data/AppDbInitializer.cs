@@ -12,11 +12,11 @@ namespace CaleaRealEstateMVC.Data
 
                 context.Database.EnsureCreated();
 
-                if (!context.ImoveisEnderecos.Any())
+                if (!context.Enderecos.Any())
                 {
-                    context.ImoveisEnderecos.AddRange(new List<ImovelEndereco>()
+                    context.Enderecos.AddRange(new List<Endereco>()
                     {
-                   new ImovelEndereco()
+                   new Endereco()
                     {
                         Logradouro = "rua leonor r borges",
                         Numero = "255",
@@ -26,7 +26,7 @@ namespace CaleaRealEstateMVC.Data
                         Cidade = "sao paulo",
                         Estado = "sp"
                     },
-                  new ImovelEndereco()
+                  new Endereco()
                     {
                         Logradouro = "rua leonor das rodas",
                         Numero = "2445",
@@ -66,25 +66,25 @@ namespace CaleaRealEstateMVC.Data
 
                 if (!context.Imoveis.Any())
                 {
-                    context.Imoveis.RemoveRange(new List<Imovel>()
+                    context.Imoveis.AddRange(new List<Imovel>()
                     {
                   new Imovel()
                     {
                         Descricao = "essa é a descrição do primeiro imovel",
                         ImagemURL = "http://dotnethow.net/images/cinemas/cinema-1.jpeg",
                         Valor = 1300.3,
-                        ImovelEnderecoId= 2,
+                        EnderecoId= 2,
                         VendedorId = 1
-                        
+
                     },
                   new Imovel()
                     {
                         Descricao = "essa é a descrição do segunda imovel",
                         ImagemURL = "http://dotnethow.net/images/cinemas/cinema-1.jpeg",
                         Valor = 1200.3,
-                        ImovelEnderecoId= 1,
+                        EnderecoId= 1,
                         VendedorId = 2
-                      
+
                     }
                 });
 

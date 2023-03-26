@@ -1,0 +1,40 @@
+﻿@*Define model*@
+
+@model List<Imovel>
+@{
+    ViewData["Title"] = "Lista de imoveis";
+}
+
+@*code*@
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-xs-6 col-md-3 border-primary">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="">
+                        <img class="rounded  mx-auto d-block mt-2" src="@item.ImagemURL" width="95%" alt="@item.Vendedor">
+                    </div>
+                    <div>
+                        <div class="card-body">
+                            <p class="card-text"><b>endereço: </b> @item.Endereco.Logradouro - @item.Endereco.Bairro, @item.Endereco.Estado</p>
+                            <p class="card-text"><b>Corretor: </b>@item.Vendedor.Nome</p>
+                            <p class="card-text"><b>Descrição: </b>@item.Descricao</p>
+                            <p class="card-text"><b>data cadastro: </b>@item.DataCadastro.ToString("dd MMM yy")</p>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-12 pb-2">
+                        <div class="card-footer">
+                            <p class="card-text ">
+                                <a class="btn btn-info text-white float-right disabled"><i class="bi bi-telephone"></i>Telefone: @item.Vendedor.Telefone</a>
+                                <a class="btn btn-success text-white disabled float-end "><i class="bi bi-cart-plus"></i>@item.Valor.ToString("c")</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

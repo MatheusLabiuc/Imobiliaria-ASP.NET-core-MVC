@@ -8,6 +8,8 @@
 
         public string Documento { get; set; }
 
+        public string Telefone { get; set; } 
+
         //relationships
 
         public List<Imovel> Imoveis { get; set;}
