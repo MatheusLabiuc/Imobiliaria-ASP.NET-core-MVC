@@ -17,18 +17,18 @@ namespace CaleaRealEstateMVC.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.13")
+                .HasAnnotation("ProductVersion", "7.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CaleaRealEstateMVC.Models.Endereco", b =>
+            modelBuilder.Entity("CaleaRealEstateMVC.Models.Imovel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Bairro")
                         .HasColumnType("nvarchar(max)");
@@ -42,41 +42,22 @@ namespace CaleaRealEstateMVC.Migrations
                     b.Property<string>("Complemento")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Estado")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Logradouro")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Numero")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Enderecos");
-                });
-
-            modelBuilder.Entity("CaleaRealEstateMVC.Models.Imovel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("Ativo")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EnderecoId")
-                        .HasColumnType("int");
+                    b.Property<string>("Estado")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagemURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Logradouro")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Numero")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Valor")
@@ -86,9 +67,6 @@ namespace CaleaRealEstateMVC.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EnderecoId")
-                        .IsUnique();
 
                     b.HasIndex("VendedorId");
 
@@ -101,7 +79,7 @@ namespace CaleaRealEstateMVC.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Documento")
                         .HasColumnType("nvarchar(max)");
@@ -119,26 +97,13 @@ namespace CaleaRealEstateMVC.Migrations
 
             modelBuilder.Entity("CaleaRealEstateMVC.Models.Imovel", b =>
                 {
-                    b.HasOne("CaleaRealEstateMVC.Models.Endereco", "Endereco")
-                        .WithOne("Imovel")
-                        .HasForeignKey("CaleaRealEstateMVC.Models.Imovel", "EnderecoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CaleaRealEstateMVC.Models.Vendedor", "Vendedor")
                         .WithMany("Imoveis")
                         .HasForeignKey("VendedorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Endereco");
-
                     b.Navigation("Vendedor");
-                });
-
-            modelBuilder.Entity("CaleaRealEstateMVC.Models.Endereco", b =>
-                {
-                    b.Navigation("Imovel");
                 });
 
             modelBuilder.Entity("CaleaRealEstateMVC.Models.Vendedor", b =>

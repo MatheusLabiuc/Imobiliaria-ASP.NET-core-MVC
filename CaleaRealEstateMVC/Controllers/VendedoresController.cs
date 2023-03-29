@@ -1,4 +1,5 @@
 ﻿using CaleaRealEstateMVC.Data;
+using CaleaRealEstateMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,8 +16,10 @@ namespace CaleaRealEstateMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allProducers = await _context.Vendedores.Include(i => i.Imoveis).ToListAsync();
-            return View(allProducers);
+            List<Imovel> imoveis= new List<Imovel>();
+            var todosVendedores = await _context.Vendedores.Include(i => i.Imoveis).
+                ToListAsync();
+            return View(todosVendedores);
         }
     }
 }

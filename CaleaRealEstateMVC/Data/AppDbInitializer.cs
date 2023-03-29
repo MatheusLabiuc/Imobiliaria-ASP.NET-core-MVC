@@ -12,53 +12,34 @@ namespace CaleaRealEstateMVC.Data
 
                 context.Database.EnsureCreated();
 
-                if (!context.Enderecos.Any())
-                {
-                    context.Enderecos.AddRange(new List<Endereco>()
-                    {
-                   new Endereco()
-                    {
-                        Logradouro = "rua leonor r borges",
-                        Numero = "255",
-                        Complemento = "casa 2",
-                        Cep ="65650-100",
-                        Bairro = "helena maria",
-                        Cidade = "sao paulo",
-                        Estado = "sp"
-                    },
-                  new Endereco()
-                    {
-                        Logradouro = "rua leonor das rodas",
-                        Numero = "2445",
-                        Complemento = "casa 43",
-                        Cep ="65320-109",
-                        Bairro = "alphaville",
-                        Cidade = "sao paulo",
-                        Estado = "sp"
-
-                    }
-                });
-
-                    context.SaveChanges();
-
-                };
-
                 if (!context.Vendedores.Any())
                 {
                     context.Vendedores.AddRange(new List<Vendedor>()
                     {
                    new Vendedor()
                     {
-                        Nome = "pedro silva",
-                        Documento = "44304034403"
+                        Nome = "Pedro Henrique",
+                        Documento = "44.543.123-21",
+                        Telefone = "(11) 321223564"
+                        
                     },
                   new Vendedor()
                     {
 
-                        Nome = "pedro joseias",
-                        Documento = "44444444"
+                        Nome = "João Carlos",
+                        Documento = "32-431.098-09",
+                        Telefone = "(11) 365435876"
+
+                    },
+                  new Vendedor()
+                    {
+
+                        Nome = "Otavio Parker",
+                        Documento = "21-321.098-09",
+                        Telefone = "(65) 65435876"
+
                     }
-                });
+                }); 
 
                     context.SaveChanges();
 
@@ -70,23 +51,71 @@ namespace CaleaRealEstateMVC.Data
                     {
                   new Imovel()
                     {
-                        Descricao = "essa é a descrição do primeiro imovel",
-                        ImagemURL = "http://dotnethow.net/images/cinemas/cinema-1.jpeg",
-                        Valor = 1300.3,
-                        EnderecoId= 2,
+                        ImagemURL = "https://cdn.pixabay.com/photo/2018/03/18/15/26/villa-3237114_960_720.jpg",
+                        Logradouro = "Rua Fonseca de Abreu",
+                        Numero = "231",
+                        Complemento = "Casa 3",
+                        Cep = "06543-190",
+                        Bairro = "Helena Maria",
+                        Cidade = "São Paulo",
+                        Estado = "SP",
+                        Descricao = "Essa é a descrição do primeiro imóvel",
+                        Valor = 500432,
+                        DataCadastro = DateTime.Now.AddDays(-5),
                         VendedorId = 1
+
 
                     },
                   new Imovel()
                     {
-                        Descricao = "essa é a descrição do segunda imovel",
-                        ImagemURL = "http://dotnethow.net/images/cinemas/cinema-1.jpeg",
-                        Valor = 1200.3,
-                        EnderecoId= 1,
+                        ImagemURL = "https://cdn.pixabay.com/photo/2016/12/06/14/33/log-cabin-1886620_960_720.jpg",
+                        Logradouro = "Rua Circular",
+                        Numero = "543",
+                        Complemento = "Apto 23",
+                        Cep = "08655-901",
+                        Bairro = "Conceição",
+                        Cidade = "São Paulo",
+                        Estado = "SP",
+                        Descricao = "Essa é a descrição do segundo imóvel",
+                        Valor = 1000000,
+                        DataCadastro = DateTime.Now.AddDays(-35),
+                        VendedorId = 1
+                    },
+                  new Imovel()
+                    {
+                        ImagemURL = "https://cdn.pixabay.com/photo/2018/03/18/15/26/villa-3237114_960_720.jpg",
+                        Logradouro = "Rua Da Fonte",
+                        Numero = "1232",
+                        Complemento = "Casa 231",
+                        Cep = "06254-901",
+                        Bairro = "Conceição",
+                        Cidade = "São Paulo",
+                        Estado = "SP",
+                        Descricao = "Essa é a descrição do terceiro imóvel",
+                        Valor = 1200000,
+                        DataCadastro = DateTime.Now.AddDays(-24),
                         VendedorId = 2
+
+                    },
+                  new Imovel()
+                    {
+                        ImagemURL = "https://cdn.pixabay.com/photo/2018/03/18/15/26/villa-3237114_960_720.jpg",
+                        Logradouro = "Estrada das Rosas",
+                        Numero = "1232",
+                        Complemento = "Casa 231",
+                        Cep = "06254-901",
+                        Bairro = "Conceição",
+                        Cidade = "São Paulo",
+                        Estado = "SP",
+                        Descricao = "Essa é a descrição do terceiro imóvel",
+                        Valor = 1200000,
+                        DataCadastro = DateTime.Now.AddDays(-24),
+                        VendedorId = 3
 
                     }
                 });
+                
+                   
 
                     context.SaveChanges();
 

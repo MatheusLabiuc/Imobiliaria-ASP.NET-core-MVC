@@ -1,4 +1,6 @@
-﻿namespace CaleaRealEstateMVC.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CaleaRealEstateMVC.Models
 {
     public class Vendedor
     {
@@ -11,7 +13,6 @@
         public string Telefone { get; set; } 
 
         //relationships
-
         public List<Imovel> Imoveis { get; set;}
     }
 }

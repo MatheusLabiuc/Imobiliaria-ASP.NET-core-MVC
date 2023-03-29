@@ -12,13 +12,7 @@ namespace CaleaRealEstateMVC.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
-            //  modelBuilder.Entity<ImovelEndereco>().Property(e => e.Id).ValueGeneratedOnAdd();
-
-            modelBuilder.Entity<Endereco>().HasKey(c => c.Id);
-
-            modelBuilder.Entity<Endereco>().HasOne(v => v.Imovel);
-
-            modelBuilder.Entity<Vendedor>().HasMany(m => m.Imoveis);
+            modelBuilder.Entity<Vendedor>().HasMany(m => m.Imoveis).WithOne(v => v.Vendedor).HasForeignKey(a => a.VendedorId);
 
             base.OnModelCreating(modelBuilder);
         }
@@ -27,6 +21,5 @@ namespace CaleaRealEstateMVC.Data
 
         public DbSet<Imovel> Imoveis { get; set;}
 
-        public DbSet<Endereco> Enderecos { get; set; }
     }
 }
